@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/Parking_Reservation_QR_Verifier/static/css/main.b27ae1d1.css",
-    "main.js": "/Parking_Reservation_QR_Verifier/static/js/main.c7e76e79.js",
+    "main.css": "/Parking_Reservation_QR_Verifier/static/css/main.f5023f89.css",
+    "main.js": "/Parking_Reservation_QR_Verifier/static/js/main.2f9f035e.js",
     "static/js/787.b0345ee4.chunk.js": "/Parking_Reservation_QR_Verifier/static/js/787.b0345ee4.chunk.js",
     "index.html": "/Parking_Reservation_QR_Verifier/index.html",
-    "main.b27ae1d1.css.map": "/Parking_Reservation_QR_Verifier/static/css/main.b27ae1d1.css.map",
-    "main.c7e76e79.js.map": "/Parking_Reservation_QR_Verifier/static/js/main.c7e76e79.js.map",
+    "main.f5023f89.css.map": "/Parking_Reservation_QR_Verifier/static/css/main.f5023f89.css.map",
+    "main.2f9f035e.js.map": "/Parking_Reservation_QR_Verifier/static/js/main.2f9f035e.js.map",
     "787.b0345ee4.chunk.js.map": "/Parking_Reservation_QR_Verifier/static/js/787.b0345ee4.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b27ae1d1.css",
-    "static/js/main.c7e76e79.js"
+    "static/css/main.f5023f89.css",
+    "static/js/main.2f9f035e.js"
   ]
 }
