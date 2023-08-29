@@ -7,6 +7,7 @@ function App() {
   const [apiResponse, setApiResponse] = useState(null);
   const [reservationValid, setReservationValid] = useState(null);
   const [showQrReader, setShowQrReader] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleScan = async (data) => {
     setScannedData(data.text);
@@ -21,31 +22,37 @@ function App() {
         date,
       };
 
+      setLoading(true);
+
       const response = await axios.post(
-        "https://dudum.serveo.net/verify-qr", //change this server url everything you run from serveo and publish again
+        "https://unde.serveo.net/verify-qr",
         requestData
       );
 
+      setLoading(false);
+
       if (response) {
         setApiResponse(response.data);
-        if (response.data === "Reservation not found") {
-          setReservationValid(false);
-        } else {
-          setReservationValid(true);
-        }
-        alert(
-          "API call successful. Response: " + JSON.stringify(response.data)
-        );
+        setReservationValid(response.data !== "Reservation not found");
       }
     } catch (error) {
-      alert("Error processing QR code data: " + error);
+      setLoading(false);
+      console.error("Error processing QR code data:", error);
       setApiResponse(null);
       setReservationValid(false);
     }
   };
 
+  const handleHideScanner = () => {
+    setShowQrReader(false);
+    setScannedData("");
+    setApiResponse(null);
+    setReservationValid(null);
+  };
+
   const handleError = (err) => {
-    alert(err);
+    console.error(err);
+    alert("Error scanning QR code: " + err);
   };
 
   return (
@@ -53,26 +60,36 @@ function App() {
       <h1 className="text-3xl font-semibold mb-4 text-purple-700">
         QR Code Validator
       </h1>
-      <button className="bg-purple-700 text-white px-4 py-2 rounded-md mb-4" onClick={() => setShowQrReader(!showQrReader)}>
+      <button
+        className="bg-purple-700 text-white px-4 py-2 rounded-md mb-4"
+        onClick={() => {
+          if (showQrReader) {
+            handleHideScanner();
+          } else {
+            setShowQrReader(true);
+          }
+        }}
+      >
         {showQrReader ? "Hide QR Scanner" : "Show QR Scanner"}
       </button>
       <div className="mb-4">
         {showQrReader && (
-          <QrReader
-          onError={handleError}
-          onScan={handleScan}
-          style={{ width: "80%", maxWidth: "300px"}}
-          facingMode="environment"
-        />)}
+          <div className="w-full max-w-md mx-auto p-4 border">
+            <QrReader
+              onError={handleError}
+              onScan={handleScan}
+              style={{ width: "100%", height: "300px" }}
+              facingMode="environment"
+            />
+          </div>
+        )}
       </div>
       <div className="mt-4">
-        <h2 className="text-xl font-semibold mb-2">
-          Reservation:
-        </h2>
+        <h2 className="text-xl font-semibold mb-2">Reservation:</h2>
         {apiResponse ? (
           <div>
             <table className="table-auto">
-              <thead className="bg-purple-700 text-white"> 
+              <thead className="bg-purple-700 text-white">
                 <tr>
                   <th className="px-4 py-2">Slot</th>
                   <th className="px-4 py-2">Start Time</th>
@@ -83,9 +100,7 @@ function App() {
               <tbody>
                 <tr>
                   <td className="border px-4 py-2">{apiResponse.slot}</td>
-                  <td className="border px-4 py-2">
-                    {apiResponse.startTime}
-                  </td>
+                  <td className="border px-4 py-2">{apiResponse.startTime}</td>
                   <td className="border px-4 py-2">{apiResponse.endTime}</td>
                   <td className="border px-4 py-2">{apiResponse.date}</td>
                 </tr>
@@ -107,6 +122,11 @@ function App() {
             : "Reservation is not valid"}
         </p>
       </div>
+      {loading && (
+        <div className="mt-4">
+          <p className="text-purple-700">Loading...</p>
+        </div>
+      )}
     </div>
   );
 }
