@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/Parking_Reservation_QR_Verifier/static/css/main.e6c13ad2.css",
-    "main.js": "/Parking_Reservation_QR_Verifier/static/js/main.5b9b9004.js",
+    "main.js": "/Parking_Reservation_QR_Verifier/static/js/main.fb0af71f.js",
     "static/js/787.b0345ee4.chunk.js": "/Parking_Reservation_QR_Verifier/static/js/787.b0345ee4.chunk.js",
     "index.html": "/Parking_Reservation_QR_Verifier/index.html",
     "main.e6c13ad2.css.map": "/Parking_Reservation_QR_Verifier/static/css/main.e6c13ad2.css.map",
-    "main.5b9b9004.js.map": "/Parking_Reservation_QR_Verifier/static/js/main.5b9b9004.js.map",
+    "main.fb0af71f.js.map": "/Parking_Reservation_QR_Verifier/static/js/main.fb0af71f.js.map",
     "787.b0345ee4.chunk.js.map": "/Parking_Reservation_QR_Verifier/static/js/787.b0345ee4.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e6c13ad2.css",
-    "static/js/main.5b9b9004.js"
+    "static/js/main.fb0af71f.js"
   ]
 }
